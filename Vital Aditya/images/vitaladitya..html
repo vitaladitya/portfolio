@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VitalAditya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .hero-section {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navigation-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .navigation-bar a {
+            margin: 0 15px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .navigation-bar a:hover {
+            color: #3498db;
+        }
+
+        .section {
+            padding: 50px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Additional styles for links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navigation-bar">
+    <a href="index.html">Home</a>
+    <a href="#visuals">Striking Visuals</a>
+    <a href="#navigation">Easy Navigation</a>
+</div>
+
+<div class="hero-section" id="hero">
+    <h1>Welcome to VitalAditya's WebPage!</h1>
+    <p>This modern and visually appealing webpage is a representation of my skills, creativity, and passion for web design.</p>
+</div>
+
+<div class="section" id="visuals">
+    <h2>Striking Visuals</h2>
+    <p>The homepage welcomes you with a vibrant hero section featuring my name and a personalized logo, creating a memorable first impression.<br>
+    The carefully chosen color scheme and typography enhance readability and user experience across the site.</p>
+</div>
+
+<div class="section" id="navigation">
+    <h2>Easy Navigation</h2>
+    <p>The navigation bar at the top provides effortless access to different sections, ensuring smooth navigation for visitors interested in learning more about me.<br>
+    Each section is thoughtfully organized, allowing visitors to explore my background, projects, and ways to get in touch.</p>
+</div>
+
+<script>
+    // Trigger animations when the elements are in the viewport
+    const sections = document.querySelectorAll('.section');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
